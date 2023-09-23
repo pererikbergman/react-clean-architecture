@@ -1,11 +1,12 @@
-import { User } from "../../../domain/user/User";
-import { UserDetails } from "../../../domain/user/UserDetails";
-import { UserRepository } from "../../../domain/user/UserRepository";
+import { UserRepository } from "../../../domain/user/repository/UserRepository";
 import { UserDto } from "./UserDto";
+import { UserSummary } from "../../../domain/user/model/UserSummary";
+import { UserDetails } from "../../../domain/user/model/UserDetails";
+
 import axiosInstance from "../../dataSource/axiosInstance";
 
 export class UserRepositoryAxios implements UserRepository {
-  async getAll(): Promise<User[]> {
+  async getAll(): Promise<UserSummary[]> {
     const response = await axiosInstance.get(`/users`);
     return response.data.map((userDto: UserDto) => convertToUser(userDto));
   }
@@ -16,6 +17,6 @@ export class UserRepositoryAxios implements UserRepository {
   }
 }
 
-function convertToUser(userDto: UserDto): User {
-  return new User(userDto.id, userDto.name);
+function convertToUser(userDto: UserDto): UserSummary {
+  return new UserSummary(userDto.id, userDto.name);
 }

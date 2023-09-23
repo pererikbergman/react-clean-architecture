@@ -1,10 +1,10 @@
-import { UserRepository } from "../UserRepository";
-import { UserDetails } from "../UserDetails";
+import { UserRepository } from "../repository/UserRepository";
+import { UserDetails } from "../model/UserDetails";
 
 export class GetUserDetails {
-  constructor(private userRepository: UserRepository) {}
+  constructor(private repository: UserRepository) {}
 
   async execute(userId: number): Promise<UserDetails> {
-    return await this.userRepository.getById(userId);
+    return await this.repository.getById(userId);
   }
 }

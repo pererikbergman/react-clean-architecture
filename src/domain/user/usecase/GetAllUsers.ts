@@ -1,10 +1,10 @@
-import { UserRepository } from "../UserRepository";
-import { User } from "../User";
+import { UserRepository } from "../repository/UserRepository";
+import { UserSummary } from "../model/UserSummary";
 
 export class GetAllUsers {
-  constructor(private userRepository: UserRepository) {}
+  constructor(private repository: UserRepository) {}
 
-  async execute(): Promise<User[]> {
-    return await this.userRepository.getAll();
+  async execute(): Promise<UserSummary[]> {
+    return await this.repository.getAll();
   }
 }

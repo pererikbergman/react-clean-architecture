@@ -1,12 +1,15 @@
 import React from "react";
+
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+
 import { useFetchUsers } from "./hooks/useFetchUsers";
-import { User } from "../../../domain/user/User";
+
+import { UserSummary } from "../../../domain/user/model/UserSummary";
 
 interface UserListViewProps {
-  onUserClick: (user: User) => void;
+  onUserClick: (user: UserSummary) => void;
 }
 
 const UserListView: React.FC<UserListViewProps> = ({ onUserClick }) => {
